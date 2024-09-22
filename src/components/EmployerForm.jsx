@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 // src/components/EmployerForm.jsx
 import React, { useState } from 'react';
 import './EmployerForm.css';
@@ -43,12 +45,13 @@ const EmployerForm = ({ addJob }) => {
     <form className="employer-form" onSubmit={handleSubmit}>
       <h2>Post a New Job</h2>
       <div className="form-group">
-        <label>Job Title</label>
+        <label>Title</label>
         <input
           type="text"
           name="title"
           value={jobData.title}
           onChange={handleChange}
+          placeholder='Job title'
           required
         />
       </div>
@@ -60,6 +63,7 @@ const EmployerForm = ({ addJob }) => {
           name="location"
           value={jobData.location}
           onChange={handleChange}
+          placeholder='Location: Remote, Hybrid,...'
           required
         />
       </div>
@@ -71,6 +75,7 @@ const EmployerForm = ({ addJob }) => {
           name="salary"
           value={jobData.salary}
           onChange={handleChange}
+          placeholder='Salary'
           required
         />
       </div>

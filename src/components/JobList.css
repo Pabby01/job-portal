@@ -2,13 +2,12 @@
 .job-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
   
   .job-item {
-    background-color: #f0f0f0;
-    padding: 1.5rem;
+    background-color: #2a9d8f;
+    padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }

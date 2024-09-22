@@ -1,5 +1,5 @@
 // src/pages/CreateAccountPage.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './CreateAccountPage.css';
 
 const CreateAccountPage = () => {
@@ -23,8 +23,15 @@ const CreateAccountPage = () => {
     e.preventDefault();
     console.log(`${accountType} account created:`, formData);
     // Handle account creation logic (API call)
-  };
+  
 
+  //redirecting based on account type
+  if(accountType == 'employee'){
+    window.location.href = '/EmployeeDash'; // go to employee dashboard page
+  }else{
+    window.location.href ='/EmployersPage'; //go to employer dashboard page
+  }
+};
   return (
     <div className="create-account-page">
       <h2>Create Account</h2>
