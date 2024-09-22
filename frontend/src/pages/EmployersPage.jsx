@@ -1,7 +1,8 @@
 // src/pages/EmployersPage.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import EmployerForm from '../components/EmployerForm';
 import JobList from '../components/JobList';
+import  './EmployersPage.css'
 
 const EmployersPage = () => {
   const [jobs, setJobs] = useState([]);
