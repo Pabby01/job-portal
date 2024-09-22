@@ -150,15 +150,3 @@ footer {
   width: 100%;
   bottom: 0;
 }
-.btx {
-  background-color: white;
-  color: #1d3557;
-  padding: 7px;
-  cursor: pointer;
-  border-radius: 10px;
-  
-}
-.name {
-  color: #1d3557;
-  cursor: pointer;
-}
