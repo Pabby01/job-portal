@@ -11,41 +11,49 @@ const FeaturedJobs = () => {
           <h3>Frontend Developer</h3>
           <p>Location: Remote</p>
           <p>Salary: $80,000/year</p>
+          <button className='btx'>Apply Now</button>
         </div>
         <div className="job-item">
           <h3>Frontend Developer</h3>
           <p>Location: Remote</p>
           <p>Salary: $80,000/year</p>
+          <button className='btx'>Apply Now</button>
         </div>
         <div className="job-item">
           <h3>Frontend Developer</h3>
           <p>Location: Remote</p>
           <p>Salary: $80,000/year</p>
+          <button className='btx'>Apply Now</button>
         </div>
         <div className="job-item">
           <h3>Frontend Developer</h3>
           <p>Location: Remote</p>
           <p>Salary: $80,000/year</p>
+          <button className='btx'>Apply Now</button>
         </div>
         <div className="job-item">
           <h3>Frontend Developer</h3>
           <p>Location: Remote</p>
           <p>Salary: $80,000/year</p>
+          <button className='btx'>Apply Now</button>
         </div>
         <div className="job-item">
           <h3>Frontend Developer</h3>
           <p>Location: Remote</p>
           <p>Salary: $80,000/year</p>
+          <button className='btx'>Apply Now</button>
         </div>
         <div className="job-item">
           <h3>Frontend Developer</h3>
           <p>Location: Remote</p>
           <p>Salary: $80,000/year</p>
+          <button className='btx'>Apply Now</button>
         </div>
         <div className="job-item">
           <h3>Backend Developer</h3>
           <p>Location: New York</p>
           <p>Salary: $95,000/year</p>
+          <button className='btx'>Apply Now</button>
         </div>
         {/* Add more job items */}
       </div>

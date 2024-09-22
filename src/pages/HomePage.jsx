@@ -19,13 +19,7 @@ const HomePage = () => {
         <form className='search-container'>
           <input className='input' type="text" placeholder="Job title" />
           <input type="text" placeholder="Location" />
-          <select className='select'>
-            <option >Backend Developer</option>
-            <option >Frontend Developer</option>
-            <option >Full stack Developer</option>
-            <option >UI/UX Designer</option>
-            <option >Product Manager</option>
-          </select>
+
           <button className='search-btn'>Search Jobs</button>
         </form>
 
