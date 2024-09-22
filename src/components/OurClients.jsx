@@ -7,9 +7,9 @@ const OurClients = () => {
       <h2>Our Clients</h2>
       <div className="client-logos">
         {/* Replace with actual client logos */}
-        <img src="/assets/linkden.jpg" alt="Client 1" />
-        <img src="/assets/client2.png" alt="Client 2" />
-        <img src="/assets/client3.png" alt="Client 3" />
+        <img className='client-logos-img' src="src/assets/linkden.jpg" alt="Client 1" />
+        <img className='client-logos-img' src="src/assets/linkden.jpg" alt="Client 2" />
+        <img className='client-logos-img' src="src/assets/linkden.jpg" alt="Client 3" />
       </div>
     </section>
   );

@@ -91,6 +91,7 @@ h1, h2, h3, p {
 .client-logos-img, .partner-logos img {
   width: 100px;
   height: auto;
+  border-radius: 100%;
 }
 
 .back-to-top {
@@ -148,3 +149,12 @@ footer {
   width: 100%;
   bottom: 0;
 }
+.btx {
+  background-color: white;
+  color: #1d3557;
+  padding: 7px;
+  cursor: pointer;
+  border-radius: 10px;
+  
+}
+
