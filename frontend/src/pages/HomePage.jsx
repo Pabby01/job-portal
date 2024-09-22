@@ -22,11 +22,11 @@ const HomePage = () => {
 <<<<<<< HEAD:frontend/src/pages/HomePage.jsx
 =======
           <select className='select'>
-            <option >Backend Developer</option>
-            <option >Frontend Developer</option>
-            <option >Full stack Developer</option>
-            <option >UI/UX Designer</option>
-            <option >Product Manager</option>
+            <option >Back-end Developer</option>
+            <option >Back-end Developer</option>
+            <option >Back-end Developer</option>
+            <option >Back-end Developer</option>
+            <option >Back-end Developer</option>
           </select>
 >>>>>>> e8429c9 (update):src/pages/HomePage.jsx
           <button className='search-btn'>Search Jobs</button>
