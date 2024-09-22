@@ -20,7 +20,7 @@ const HomePage = () => {
           <input type="text" placeholder="Location" />
           <select className='select'>
             <option >Back-end Developer</option>
-            <option >Back-end Developer</option>
+            <option >Frontend Developer</option>
             <option >Back-end Developer</option>
             <option >Back-end Developer</option>
             <option >Back-end Developer</option>
