@@ -19,7 +19,6 @@ const HomePage = () => {
         <form className='search-container'>
           <input className='input' type="text" placeholder="Job title" />
           <input type="text" placeholder="Location" />
-
           <button className='search-btn'>Search Jobs</button>
         </form>
 
