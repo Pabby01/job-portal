@@ -20,11 +20,15 @@ const HomePage = () => {
           <input className='input' type="text" placeholder="Job title" />
           <input type="text" placeholder="Location" />
 <<<<<<< HEAD:frontend/src/pages/HomePage.jsx
+<<<<<<< HEAD:frontend/src/pages/HomePage.jsx
 =======
           <select className='select'>
             
           </select>
 >>>>>>> e8429c9 (update):src/pages/HomePage.jsx
+=======
+
+>>>>>>> 51aba97 (update):src/pages/HomePage.jsx
           <button className='search-btn'>Search Jobs</button>
         </form>
 
