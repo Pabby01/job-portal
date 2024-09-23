@@ -20,6 +20,8 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/employers" element={<EmployersPage />} />
         <Route path="/create-account" element={<CreateAccountPage />} />
+        <Route path="/employeeDash" element={<EmployeeDash/>} />
+        <Route path="/employersPage" element={<EmployersPage/>}/>
         {/* Additional routes can be added here */}
       </Routes>
       <Footer />
