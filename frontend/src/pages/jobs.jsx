@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import JobList from '../components/JobList';  // Import the JobList component
 
