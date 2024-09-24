@@ -77,6 +77,7 @@ const CreateAccountPage = () => {
           value={formData.password}
           onChange={handleChange}
           required
+          minLength="8" 
         />
 
         {accountType === 'employer' && (
