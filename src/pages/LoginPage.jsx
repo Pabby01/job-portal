@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // src/pages/LoginPage.jsx
 import React, { useState } from 'react';
 import './LoginPage.css';

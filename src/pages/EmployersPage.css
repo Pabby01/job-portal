@@ -1,5 +1,4 @@
 h1, h2, p {
-    margin-top: 20px;
     text-align: center;
 }
 
@@ -8,5 +7,5 @@ h2{
 }
 
 p{
-    margin-bottom: 10px;
+    color: rgb(255,255,255);
 }
