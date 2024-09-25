@@ -5,7 +5,7 @@ import '../styles/HomePage.css';
 
 const HomePage = () => {
   return (
-    <div className="homepage">
+    <div>
       {/* Hero Section with Search */}
       <section className="hero-section">
         <div className="container">
@@ -19,7 +19,7 @@ const HomePage = () => {
       <section className="job-listings">
         <div className="container">
           <h2>Featured Jobs</h2>
-          <JobList />
+          <JobList featured/>
         </div>
       </section>
     </div>

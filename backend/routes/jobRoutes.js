@@ -1,19 +1,28 @@
 // routes/jobRoutes.js
 import express from 'express';
-import Job from '../models/Job.js';
+// import Job from '../models/Job.js';
+import jobListings from '../db/fakeData.js';
 import { protect, admin } from '../middlewares/authMiddleware.js';  // Middleware to check if user is logged in and/or an admin
 
 const router = express.Router();
 
 // Fetch all jobs
 router.get('/', async (req, res) => {
-  const jobs = await Job.find({});
-  res.json(jobs);
+  // const jobs = await Job.find({});
+  // res.json(jobs);
+  return res.json(jobListings);
 });
+
+// Fetch all Featured Jobs
+router.get('/featured/', (req, res) => {
+  const featuredJobs = jobListings.filter(job => job.featured === true);
+  return res.json(featuredJobs)
+})
 
 // Fetch a single job by ID
 router.get('/:id', async (req, res) => {
-  const job = await Job.findById(req.params.id);
+  const job = jobListings.find(job => job.id == parseInt(req.params.id));
+  // const job = await Job.findById(req.params.id);
   if (job) {
     res.json(job);
   } else {

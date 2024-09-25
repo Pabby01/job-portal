@@ -10,6 +10,7 @@ const jobSchema = mongoose.Schema({
     required: true,
     ref: 'User'
   },
+  featured: { type: Boolean, default: false },  // New field to indicate if the job is featured
 }, {
   timestamps: true
 });
