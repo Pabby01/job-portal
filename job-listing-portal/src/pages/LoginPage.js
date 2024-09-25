@@ -24,7 +24,6 @@ const LoginPage = ({ onLogin }) => {
       const data = await login.json();
       console.log('Login successful:', data);
       setIsAuthenticated(true);
-      onLogin(); // Call onLogin to perform any additional actions
     } else {
       const errorData = await login.json(); // Get the error message
       setErrorMessage(errorData.message || 'Login failed. Please try again.');
