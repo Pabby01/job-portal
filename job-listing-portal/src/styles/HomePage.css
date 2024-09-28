@@ -104,15 +104,6 @@
   padding: 2rem 1rem;
 }
 
-.application-form-container {
-  /* margin: 5rem 0;
-  padding: 4rem; */
-}
-
-.jobapplicationform {
-  /* background-color: red; */
-}
-
 .jobapplicationform>* {
   display: block;
   margin: 1rem 0;

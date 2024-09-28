@@ -13,6 +13,8 @@ import Layout from './components/Layout'; // Import the layout
 
 import './App.css'
 import { AuthProvider } from './context/AuthContext.js';
+import AboutUsPage from './pages/AboutUsPage.jsx';
+import BlogsPage from './pages/BlogsPage.jsx';
 // import Modal from './components/Modal.js';
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/about-us" element={<AboutUsPage />} />
+            <Route path="/blogs" element={<BlogsPage />} />
             <Route path="/jobs/:jobId" element={<JobDetails />} />
             <Route path="/apply/:jobId" element={<JobApplicationForm />} />
             {/* <Route path="/login" element={<LoginPage onLogin={() => setIsAuthenticated(true)} />} /> */}

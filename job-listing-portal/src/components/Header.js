@@ -24,10 +24,10 @@ const Header = () => {
           <nav className='nav-links'>
             <ul>
               <li><Link to='/'>Home</Link></li>
-              <li><Link to='/'>About us</Link></li>
-              <li><Link to='/'>blog</Link></li>
-              <li><Link to='/'>Login</Link></li>
-              <li><Link to='/'>Sign up</Link></li>
+              <li><Link to='/about-us'>About us</Link></li>
+              <li><Link to='/blogs'>blog</Link></li>
+              <li><Link to='/login'>Login</Link></li>
+              <li><Link to='/register'>Sign up</Link></li>
             </ul>
           </nav>
         )}
