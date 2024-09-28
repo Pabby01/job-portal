@@ -1,7 +1,7 @@
 // components/Header.js
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Header.css'; // Add styles for header
+import '../styles/Header.css';
 
 import { useAuth } from '../context/AuthContext';
 
@@ -15,12 +15,7 @@ const Header = () => {
         setDashboardUrl(user.role === 'employer' ? 'employer' : 'job-seeker');
       }
     }
-  }, [user, loading]);
-
-
-  if (loading) {
-    return <div>Loading...</div>; // Or a more sophisticated loading indicator
-  }
+  }, [user, loading, dashboardUrl]);
 
   return (
     <header className="site-header">

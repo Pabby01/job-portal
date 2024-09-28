@@ -20,6 +20,10 @@ const EmployerDashboard = () => {
   const [newApplicationNotification, setNewApplicationNotification] = useState(null); // State for real-time notifications
   const [updatingProfile, setUpdatingProfile] = useState(false); // Loading state for profile updates
 
+  // API URL
+  const apiUrl = process.env.REACT_APP_API_URL;
+  // alert(apiUrl)
+
   // Connect to the real-time notifications using the custom Socket.IO hook
   // useSocket(null, (notification) => {
   //   // Handle real-time new application notifications
@@ -29,17 +33,17 @@ const EmployerDashboard = () => {
 
   useEffect(() => {
     // Fetch the jobs posted by the employer
-    axios.get('/api/employer/posted-jobs')
+    axios.get(`${apiUrl}/api/employer/posted-jobs`)
       .then(response => setPostedJobs(response.data))
       .catch(error => console.error('Error fetching posted jobs:', error));
 
     // Fetch applications for the posted jobs
-    axios.get('/api/employer/applications')
+    axios.get(`${apiUrl}/api/employer/applications`)
       .then(response => setApplications(response.data))
       .catch(error => console.error('Error fetching applications:', error));
 
     // Fetch company profile details
-    axios.get('/api/employer/company-profile')
+    axios.get(`${apiUrl}/api/employer/company-profile`)
       .then(response => setCompanyProfile(response.data))
       .catch(error => console.error('Error fetching company profile:', error));
   }, []);
@@ -47,7 +51,7 @@ const EmployerDashboard = () => {
   const handlePostJob = (e) => {
     e.preventDefault();
     // Logic to post a new job
-    axios.post('/api/employer/post-job', newJob)
+    axios.post(`${apiUrl}/api/employer/post-job`, newJob)
       .then(response => {
         alert('Job posted successfully!');
         setPostedJobs([...postedJobs, response.data]);
@@ -60,7 +64,7 @@ const EmployerDashboard = () => {
     e.preventDefault();
     setUpdatingProfile(true); // Set loading state
     // Logic to update company profile
-    axios.post('/api/employer/update-company-profile', companyProfile)
+    axios.post(`${apiUrl}/api/employer/update-company-profile`, companyProfile)
       .then(() => {
         alert('Company profile updated successfully!');
         setUpdatingProfile(false);

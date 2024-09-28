@@ -13,6 +13,7 @@ import { connectDB } from "./config/db.js";
 
 import jobRoutes from './routes/jobRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import EmployerRoutes from './routes/employerRoutes.js';
 
 dotenv.config();
 connectDB();
@@ -25,6 +26,7 @@ app.use(express.json()); //express middleware to pass JSON bodies
 
 app.use('/api/jobs', jobRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/employer', EmployerRoutes);
 
 
 // Create an HTTP server to work with Socket.IO
