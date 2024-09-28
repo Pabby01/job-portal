@@ -8,13 +8,15 @@ import RegisterPage from './pages/RegisterPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import VerifyCodePage from './pages/VerifyCodePage.js';
 import ResetPasswordPage from './pages/ResetPasswordPage';
+import SuccessPage from './pages/SuccessPage.js'
 import Layout from './components/Layout'; // Import the layout
 
 import './App.css'
 import { AuthProvider } from './context/AuthContext.js';
+// import Modal from './components/Modal.js';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [setIsAuthenticated] = useState(false);
 
   return (
     <AuthProvider>
@@ -26,6 +28,7 @@ function App() {
             <Route path="/apply/:jobId" element={<JobApplicationForm />} />
             {/* <Route path="/login" element={<LoginPage onLogin={() => setIsAuthenticated(true)} />} /> */}
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/login/success" element={<SuccessPage />} />
             <Route path="/register" element={<RegisterPage onRegister={() => setIsAuthenticated(true)} />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route path="/verify-code" element={<VerifyCodePage />} />

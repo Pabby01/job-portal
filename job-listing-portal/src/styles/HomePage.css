@@ -128,3 +128,227 @@
   display: inline-block;
   min-width: 50%;
 }
+
+
+/* ------Why choose us---------- */
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.reasons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* Ensures the layout is responsive */
+  gap: 20px;
+  /* Adds spacing between the items */
+}
+
+.reason {
+  flex: 1 1 calc(50% - 20px);
+  /* Each reason takes 50% width minus the gap on desktop */
+  background-color: #f8f8f8;
+  /* Light background for contrast */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Adds a subtle shadow */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.reason:hover {
+  transform: translateY(-10px);
+  /* Slight movement on hover for interactivity */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  /* More pronounced shadow on hover */
+}
+
+.reason h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.reason ul {
+  padding-left: 20px;
+  /* Indent for bullet points */
+}
+
+.reason ul li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.reason ul li strong {
+  color: #333;
+  /* Highlight the key points */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .reason {
+    flex: 1 1 100%;
+    /* On smaller screens, each reason takes full width */
+  }
+}
+
+
+
+/* Testimonials */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+/* Testimonials Container */
+.testimonials {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Individual Testimonial Card */
+.testimonial {
+  flex: 1 1 calc(33% - 20px);
+  /* 3 testimonials per row on larger screens */
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.testimonial:hover {
+  transform: translateY(-10px);
+  /* Elevates the card slightly on hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.testimonial h4 {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Optional: Add styles for a circular avatar image */
+.testimonial img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .testimonial {
+    flex: 1 1 calc(50% - 20px);
+    /* 2 testimonials per row on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial {
+    flex: 1 1 100%;
+    /* 1 testimonial per row on small screens */
+  }
+}
+
+
+/* -------------- Employer ------------ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+/* Employers Container */
+.employers {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Individual Employer Card */
+.employer {
+  flex: 1 1 calc(25% - 20px);
+  /* 4 employers per row on larger screens */
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.employer:hover {
+  transform: translateY(-10px);
+  /* Hover effect to lift the card slightly */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  /* Stronger shadow on hover */
+}
+
+/* Employer Logo Styling */
+.employer img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  /* Ensures the image fits without distortion */
+  margin-bottom: 15px;
+}
+
+/* Employer Name */
+.employer h4 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Employer Description */
+.employer p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .employer {
+    flex: 1 1 calc(50% - 20px);
+    /* 2 employers per row on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .employer {
+    flex: 1 1 100%;
+    /* 1 employer per row on small screens */
+  }
+}

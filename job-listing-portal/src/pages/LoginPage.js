@@ -1,33 +1,54 @@
 import React, { useState } from 'react';
 import '../styles/AuthPage.css'; // Import the styles
 import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { setIsAuthenticated } = useAuth();
+  const { login } = useAuth();
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     const url = 'http://localhost:5000/api/users/login';
-    const login = await fetch(url, {
-      method: 'POST', // Ensure method is set to POST
+    const response = await fetch(url, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email, password }),
     });
+    const data = await response.json();
 
-    if (login.ok) {
-      const data = await login.json();
-      console.log('Login successful:', data);
-      setIsAuthenticated(true);
+    // if (data.token) {
+    //   login({ token: data.token }); // Set user data on successful login
+    // } else {
+    //   // Handle login error
+    //   console.error('Login failed:', data.message);
+    // }
+
+    // if (login.ok && login.token) {
+    //   const data = await login.json();
+    //   // setUser(() => data);
+
+    //   localStorage.setItem('user', JSON.stringify(data));
+    //   navigate('/login/success/')
+    //   return;
+    //   // openModal();
+    // } else {
+    //   const errorData = await login.json();
+    //   setErrorMessage(errorData.message || 'Login failed. Please try again.');
+    //   console.error('Login failed:', login.statusText);
+    // }
+    if (data) {
+      login(data);
+      navigate('/')
     } else {
-      const errorData = await login.json(); // Get the error message
-      setErrorMessage(errorData.message || 'Login failed. Please try again.');
-      console.error('Login failed:', login.statusText);
+      setErrorMessage(data.message || 'Login failed. Please try again.');
+      console.error('login failed')
     }
   };
 
@@ -39,7 +60,7 @@ const LoginPage = ({ onLogin }) => {
           <label htmlFor="email">Email or Username</label>
           <input
             type="text"
-            id="email" // Add id for better accessibility
+            id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -49,7 +70,7 @@ const LoginPage = ({ onLogin }) => {
           <label htmlFor="password">Password</label>
           <input
             type="password"
-            id="password" // Add id for better accessibility
+            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -60,6 +81,11 @@ const LoginPage = ({ onLogin }) => {
       </form>
       <a href="/forgot-password">Forgot Password?</a>
       <a href="/register">Don't have an account? Register</a>
+
+      {/* Modal for successful login */}
+      {/* <Modal show={showModal} onClose={closeModal} title="Login Successful">
+        <p>You have successfully logged in!</p>
+      </Modal> */}
     </div>
   );
 };
