@@ -45,7 +45,7 @@ const LoginPage = ({ onLogin }) => {
     // }
     if (data) {
       login(data);
-      navigate('/')
+      navigate('/dashboard/')
     } else {
       setErrorMessage(data.message || 'Login failed. Please try again.');
       console.error('login failed')

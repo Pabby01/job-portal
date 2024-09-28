@@ -1,14 +1,13 @@
 // routes/userRoutes.js
 import express from 'express';
 import User from '../models/User.js';
-import bcrypt from 'bcryptjs';
 import generateToken from '../utils/generateToken.js'; // Utility function to generate JWT
 
 const router = express.Router();
 
 // User registration
 router.post('/register', async (req, res) => {
-  const { name, email, password, isEmployee } = req.body;
+  const { firstName, lastName, email, password, isEmployee, role, } = req.body;
   const userExists = await User.findOne({ email });
 
   if (userExists) {
@@ -17,23 +16,28 @@ router.post('/register', async (req, res) => {
   }
 
   const user = new User({
-    name,
+    firstName,
+    lastName,
     email,
+    role,
     isEmployee,
     password
   });
 
-  const salt = await bcrypt.genSalt(10);
-  user.password = await bcrypt.hash(password, salt);
+  try {
+    const createdUser = await user.save();
 
-  const createdUser = await user.save();
-  res.status(201).json({
-    _id: createdUser._id,
-    name: createdUser.name,
-    email: createdUser.email,
-    isEmployee: createdUser.isEmployee,
-    token: generateToken(createdUser._id)
-  });
+    return res.status(201).json({
+      _id: createdUser._id,
+      name: createdUser.name,
+      email: createdUser.email,
+      isEmployee: createdUser.isEmployee,
+      role: createdUser.role,
+      token: generateToken(createdUser._id)
+    });
+  } catch (e) {
+    console.log(e)
+  }
 });
 
 // User login
@@ -42,16 +46,23 @@ router.post('/login', async (req, res) => {
   const user = await User.findOne({ email });
 
   if (user && (await user.matchPassword(password))) {
-    res.json({
+    return res.json({
       _id: user._id,
-      name: user.name,
+      firstName: user.firstName,
+      lastName: user.lastName,
       email: user.email,
-      isEmployee: user.isEmployee,
+      role: user.role,
       token: generateToken(user._id)
     });
   } else {
     res.status(401).json({ message: 'Invalid email or password' });
   }
 });
+
+// GET ALL USERS
+router.get('/', async (_req, res) => {
+  const users = await User.find({})
+  res.json(users)
+})
 
 export default router;

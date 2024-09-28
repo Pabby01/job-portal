@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './EmployerDashboard.css'; // Add styles for the dashboard
+import '../styles/EmployerDashboard.css'; // Add styles for the dashboard
 import axios from 'axios';
 import useSocket from '../hooks/useSocket'; // Custom hook to handle socket.io
 
@@ -21,11 +21,11 @@ const EmployerDashboard = () => {
   const [updatingProfile, setUpdatingProfile] = useState(false); // Loading state for profile updates
 
   // Connect to the real-time notifications using the custom Socket.IO hook
-  useSocket(null, (notification) => {
-    // Handle real-time new application notifications
-    setNewApplicationNotification(notification);
-    // Optionally, you can fetch the latest applications here or update the state accordingly
-  });
+  // useSocket(null, (notification) => {
+  //   // Handle real-time new application notifications
+  //   setNewApplicationNotification(notification);
+  //   // Optionally, you can fetch the latest applications here or update the state accordingly
+  // });
 
   useEffect(() => {
     // Fetch the jobs posted by the employer

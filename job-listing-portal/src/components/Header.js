@@ -1,12 +1,26 @@
 // components/Header.js
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Header.css'; // Add styles for header
 
 import { useAuth } from '../context/AuthContext';
 
 const Header = () => {
-  const { user } = useAuth();
+  const [dashboardUrl, setDashboardUrl] = useState('');
+  const { user, loading } = useAuth();
+
+  useEffect(() => {
+    if (loading === false) {
+      if (user) {
+        setDashboardUrl(user.role === 'employer' ? 'employer' : 'job-seeker');
+      }
+    }
+  }, [user, loading]);
+
+
+  if (loading) {
+    return <div>Loading...</div>; // Or a more sophisticated loading indicator
+  }
 
   return (
     <header className="site-header">
@@ -18,7 +32,8 @@ const Header = () => {
           < nav className='nav-links'>
             <ul>
               <li><Link to='/'>Home</Link></li>
-              <li><Link to='/'>Dashboard</Link></li>
+              <li><Link to={`/dashboard/${dashboardUrl}`}>Dashboard</Link></li>
+              <li><Link to='/'>Profile</Link></li>
             </ul>
           </nav>) : (
           <nav className='nav-links'>

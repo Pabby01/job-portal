@@ -25,10 +25,10 @@ export const AuthProvider = ({ children }) => {
             //     }
             // };
             // verifyToken();
-            setUser({ user });
-            console.log(user, '=============================')
+            setUser(user);
+            setLoading(false);
         }
-        setLoading(false);
+        // setLoading(false)
     }, []); // Run effect only once on mount
 
     const login = (userData) => {

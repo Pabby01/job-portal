@@ -2,7 +2,7 @@
   "name": "job-portal",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon app.js"
   },
   "type": "module",
   "keywords": [],
