@@ -1,13 +1,16 @@
 // routes/userRoutes.js
 import express from 'express';
 import User from '../models/User.js';
+import EmployerProfile from '../models/employer.model.js';
+import JobSeekerProfile from '../models/jobseeker.model.js';
+
 import generateToken from '../utils/generateToken.js'; // Utility function to generate JWT
 
 const router = express.Router();
 
 // User registration
 router.post('/register', async (req, res) => {
-  const { firstName, lastName, email, password, isEmployee, role, } = req.body;
+  const { firstName, lastName, email, password, role, } = req.body;
   const userExists = await User.findOne({ email });
 
   if (userExists) {
@@ -19,13 +22,29 @@ router.post('/register', async (req, res) => {
     firstName,
     lastName,
     email,
+    password,
     role,
-    isEmployee,
-    password
   });
 
   try {
     const createdUser = await user.save();
+    if (user.role === 'employer') {
+      await EmployerProfile.create({
+        user: createdUser._id,
+        companyName: 'Acme Inc',
+        currentPosition: 'director',
+        companyWebsite: 'www.acme.com',
+        description: 'Leading widget manufacturer'
+      });
+    } else if (user.role === 'job_seeker') {
+      await JobSeekerProfile.create({
+        user: createdUser._id,
+        resume: 'artist',
+        skills: 'developer',
+        experience: '2+',
+        education: 'university of uyo'
+      });
+    }
 
     return res.status(201).json({
       _id: createdUser._id,
@@ -35,6 +54,10 @@ router.post('/register', async (req, res) => {
       role: createdUser.role,
       token: generateToken(createdUser._id)
     });
+
+    // return res.status(201).json({
+    //   ...createdUser, ...createdUser.profile
+    // });
   } catch (e) {
     console.log(e)
   }

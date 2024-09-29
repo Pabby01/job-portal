@@ -1,5 +1,7 @@
 // import mongoose from 'mongoose';
 
+import mongoose from "mongoose";
+
 // const jobSchema = mongoose.Schema({
 //   title: { type: String, required: true },
 //   description: { type: String, required: true },
@@ -18,11 +20,11 @@
 const jobSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
-  company: { type: String, required: true },
   location: { type: String },
   salary: { type: Number },
-  jobType: { type: String, enum: ['full-time', 'part-time', 'freelance'], required: true },
-  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Employer who posted the job
+  jobType: { type: String, enum: ['full-time', 'part-time', 'freelance', 'internship', 'contract'], required: true },
+  featured: { type: Boolean, default: false },
+  employer: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Employer who posted the job
   applicants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }], // List of applicants (job seekers)
   createdAt: { type: Date, default: Date.now }
 });

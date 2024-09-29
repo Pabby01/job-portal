@@ -18,10 +18,10 @@ const protect = asyncHandler(async (req, res, next) => {
       // Get user from the token (do not include password)
       req.user = await User.findById(decoded.id).select('-password');
 
-      next(); 
+      next();
     } catch (error) {
       console.error('Not authorized, token failed', error);
-      res.status(401).json({ message: 'Not authorized, token failed'  });
+      res.status(401).json({ message: 'Not authorized, token failed' });
       return;
     }
   }
@@ -40,4 +40,12 @@ const admin = (req, res, next) => {
   }
 };
 
-export { protect, admin };
+const employer = (req, res, next) => {
+  if (req.user && req.user.role === 'employer') {
+    next();
+  } else {
+    res.status(401).json({ message: 'Not authorized as an employer' });
+  }
+};
+
+export { protect, admin, employer };

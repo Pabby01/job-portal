@@ -2,7 +2,7 @@
 import express from 'express';
 // import Job from '../models/Job.js';
 import jobListings from '../db/fakeData.js';
-import { protect, admin } from '../middlewares/authMiddleware.js';  // Middleware to check if user is logged in and/or an admin
+import { protect, employer, admin } from '../middlewares/authMiddleware.js';  // Middleware to check if user is logged in and/or an admin
 
 const router = express.Router();
 
@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Create a new job
-router.post('/', protect, admin, async (req, res) => {
+router.post('/', protect, employer, async (req, res) => {
   const { title, description, salary, location } = req.body;
   const job = new Job({
     title,
@@ -45,7 +45,7 @@ router.post('/', protect, admin, async (req, res) => {
 });
 
 // Update a job
-router.put('/:id', protect, admin, async (req, res) => {
+router.put('/:id', protect, employer, async (req, res) => {
   const { title, description, salary, location } = req.body;
   const job = await Job.findById(req.params.id);
 

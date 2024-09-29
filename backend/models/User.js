@@ -6,17 +6,11 @@ const userSchema = new mongoose.Schema({
   lastName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  role: { type: String, enum: ['job_seeker', 'employer', 'admin'], required: true },
+  // role: { type: String, enum: ['job_seeker', 'employer', 'admin'], required: true },
+  role: { type: String, enum: ['job_seeker', 'employer'], required: true },
   profile: {
-    // Additional fields for Job Seekers
-    resume: { type: String },  // Link to uploaded resume (if job seeker)
-    skills: [String],
-    experience: { type: String },
-    education: { type: String },
-
-    // Additional fields for Employers
-    companyName: { type: String },  // If employer
-    companyWebsite: { type: String },
+    type: mongoose.Schema.Types.ObjectId,
+    refPath: 'role'
   },
   createdAt: { type: Date, default: Date.now }
 });
