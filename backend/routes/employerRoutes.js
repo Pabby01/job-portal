@@ -1,6 +1,5 @@
 import express from 'express';
 import User from '../models/User.js';
-import generateToken from '../utils/generateToken.js'; // Utility function to generate JWT
 import { protect, employer } from '../middlewares/authMiddleware.js';
 import EmployerProfile from '../models/employer.model.js';
 import Job from '../models/Job.js';

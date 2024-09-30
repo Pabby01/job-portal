@@ -2,7 +2,6 @@
 import express, { urlencoded } from "express";
 import dotenv from "dotenv";
 import cors from 'cors';
-import multer from 'multer';
 
 // import jobseekerRoutes from "./routes/jobseeker.route.js"; // Importing the default export
 // import employerRoutes from "./routes/employer.route.js"; // Importing the default export
@@ -15,18 +14,12 @@ import { connectDB } from "./config/db.js";
 import jobRoutes from './routes/jobRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import EmployerRoutes from './routes/employerRoutes.js';
+import JobSeekerRoutes from './routes/jobSeekerRoute.js';
 
 dotenv.config();
 connectDB();
 
 const app = express();
-
-// const upload = multer();
-
-// app.post('/api/jobs', upload.none(), (req, res) => {
-//   console.log(req.body);
-//   // Your logic here
-// });
 
 app.use(cors());
 
@@ -35,6 +28,7 @@ app.use(express.json()); //express middleware to pass JSON bodies
 app.use('/api/jobs', jobRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/employer', EmployerRoutes);
+app.use('/api/user', JobSeekerRoutes);
 
 
 // Create an HTTP server to work with Socket.IO

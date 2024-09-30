@@ -50,14 +50,9 @@ router.post('/register', async (req, res) => {
       _id: createdUser._id,
       name: createdUser.name,
       email: createdUser.email,
-      isEmployee: createdUser.isEmployee,
       role: createdUser.role,
       token: generateToken(createdUser._id)
     });
-
-    // return res.status(201).json({
-    //   ...createdUser, ...createdUser.profile
-    // });
   } catch (e) {
     console.log(e)
   }

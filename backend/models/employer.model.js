@@ -23,7 +23,5 @@ const employerProfileSchema = new mongoose.Schema({
 
 const EmployerProfile = mongoose.model('EmployerProfile', employerProfileSchema);
 
-// const Employer = mongoose.model("Employer", EmployerSchema);
-
 // export default Employer;
 export default EmployerProfile;
