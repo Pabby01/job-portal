@@ -63,11 +63,12 @@ router.post('/post-job', protect, employer, async (req, res) => {
 
 
 router.post('/update-company-profile', async (req, res) => {
-    const { user: userDetails, companyProfile } = req.body;
+    const user = req.user;
+    const { companyProfile } = req.body;
 
     if (userDetails.role === 'employer') {
         try {
-            const employerProfile = await EmployerProfile.findOne({ user: userDetails._id });
+            const employerProfile = await EmployerProfile.findOne({ user: user._id });
 
             if (!employerProfile) {
                 return res.status(404).json({ message: 'Employer profile not found' });
@@ -85,7 +86,7 @@ router.post('/update-company-profile', async (req, res) => {
                 { new: true }
             ).populate({
                 path: 'profile',
-                model: roleToModelMap[userDetails.role], // Use the mapping to get the correct model
+                model: roleToModelMap[user.role], // Use the mapping to get the correct model
             });
 
             if (!user) {

@@ -1,7 +1,8 @@
 //Creating a basic server using Express(main server entry point)
-import express, { urlencoded } from "express";
+import express from "express";
 import dotenv from "dotenv";
 import cors from 'cors';
+import multer from "multer";
 
 // import jobseekerRoutes from "./routes/jobseeker.route.js"; // Importing the default export
 // import employerRoutes from "./routes/employer.route.js"; // Importing the default export
@@ -22,6 +23,19 @@ connectDB();
 const app = express();
 
 app.use(cors());
+
+// Set up storage for uploaded files
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/') // files will be saved in the 'uploads' directory
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+  }
+});
+
+// Create the multer instance
+const upload = multer({ storage: storage });
 
 app.use(express.json()); //express middleware to pass JSON bodies
 
