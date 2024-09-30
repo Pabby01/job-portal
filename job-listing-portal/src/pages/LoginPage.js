@@ -43,9 +43,9 @@ const LoginPage = ({ onLogin }) => {
     //   setErrorMessage(errorData.message || 'Login failed. Please try again.');
     //   console.error('Login failed:', login.statusText);
     // }
-    if (data) {
+    if (data.token) {
       login(data);
-      navigate('/dashboard/')
+      navigate('/dashboard')
     } else {
       setErrorMessage(data.message || 'Login failed. Please try again.');
       console.error('login failed')

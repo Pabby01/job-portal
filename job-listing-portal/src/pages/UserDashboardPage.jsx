@@ -3,7 +3,11 @@ import '../styles/UserDashboard.css';
 import axios from 'axios';
 import useSocket from '../hooks/useSocket';
 
+import { useAuth } from '../context/AuthContext';
+
 const UserDashboard = () => {
+    const { user, loading } = useAuth();
+    const [fileName, setFileName] = useState('No file chosen');
     const [jobApplications, setJobApplications] = useState([]);
     const [savedJobs, setSavedJobs] = useState([]);
     const [userProfile, setUserProfile] = useState({
@@ -19,24 +23,62 @@ const UserDashboard = () => {
     //   setNewApplicationNotification(notification);
     // });
 
+    // API
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const token = user?.token;
+
     useEffect(() => {
-        axios.get('/api/user/job-applications')
-            .then(response => setJobApplications(response.data))
-            .catch(error => console.error('Error fetching job applications:', error));
+        if (!loading && user) {
+            axios.get(`${apiUrl}/api/user/job-applications`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                .then(response => setJobApplications(response.data))
+                .catch(error => console.error('Error fetching job applications:', error));
 
-        axios.get('/api/user/saved-jobs')
-            .then(response => setSavedJobs(response.data))
-            .catch(error => console.error('Error fetching saved jobs:', error));
+            axios.get(`${apiUrl}/api/user/saved-jobs`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                .then(response => setSavedJobs(response.data))
+                .catch(error => console.error('Error fetching saved jobs:', error));
 
-        axios.get('/api/user/profile')
-            .then(response => setUserProfile(response.data))
-            .catch(error => console.error('Error fetching user profile:', error));
-    }, []);
+            axios.get(`${apiUrl}/api/user/profile`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                .then(response => setUserProfile(response.data))
+                .catch(error => console.error('Error fetching user profile:', error));
+        }
+    }, [apiUrl, token, loading, user]);
 
     const handleProfileUpdate = (e) => {
         e.preventDefault();
         setUpdatingProfile(true);
-        axios.post('/api/user/update-profile', userProfile)
+
+        const formData = new FormData();
+        for (const key in userProfile) {
+            if (key === 'skills') {
+                formData.append(key, JSON.stringify(userProfile[key]));
+            } else if (key === 'resume' && userProfile[key] instanceof File) {
+                formData.append(key, userProfile[key], userProfile[key].name);
+            } else {
+                formData.append(key, userProfile[key]);
+            }
+        }
+
+        alert('set');
+        console.log(formData);
+
+        axios.post(`${apiUrl}/api/user/update-profile`, formData, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data'
+            }
+        })
             .then(() => {
                 alert('Profile updated successfully!');
                 setUpdatingProfile(false);
@@ -47,12 +89,35 @@ const UserDashboard = () => {
             });
     };
 
+    // const handleFileChange = (event) => {
+    //     const file = event.target.files[0];
+    //     if (file) {
+    //         setFileName(file.name);
+    //         // onChange(file);
+    //     }
+    // };
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            setFileName(file.name);
+            setUserProfile(prevProfile => ({
+                ...prevProfile,
+                resume: file
+            }));
+        }
+    };
+
     const handleResumeUpload = (e) => {
         const file = e.target.files[0];
         const formData = new FormData();
         formData.append('resume', file);
 
-        axios.post('/api/user/upload-resume', formData)
+        axios.post(`${apiUrl}/api/user/upload-resume`, formData, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
             .then(response => {
                 setUserProfile({ ...userProfile, resume: response.data.resumeUrl });
                 alert('Resume uploaded successfully!');
@@ -99,13 +164,54 @@ const UserDashboard = () => {
                             onChange={(e) => setUserProfile({ ...userProfile, skills: e.target.value.split(',').map(skill => skill.trim()) })}
                         />
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                         <label>Resume</label>
                         <input
                             type="file"
                             accept=".pdf,.doc,.docx"
                             onChange={handleResumeUpload}
                         />
+                    </div> */}
+                    <div className="file-input-container">
+                        <label className="file-input-label">
+                            <span className="file-input-button">Choose File</span>
+                            <input
+                                type="file"
+                                className="file-input"
+                                accept=".pdf,.doc,.docx"
+                                onChange={handleFileChange}
+                            />
+                        </label>
+                        <span className="file-name">{fileName}</span>
+                        <style jsx>{`
+                                .file-input-container {
+                                display: flex;
+                                align-items: center;
+                                gap: 10px;
+                                }
+                                .file-input-label {
+                                cursor: pointer;
+                                }
+                                .file-input-button {
+                                background-color: #3498db;
+                                color: white;
+                                padding: 10px 20px;
+                                border-radius: 5px;
+                                font-weight: bold;
+                                display: inline-block;
+                                transition: background-color 0.3s;
+                                }
+                                .file-input-button:hover {
+                                background-color: #2980b9;
+                                }
+                                .file-input {
+                                display: none;
+                                }
+                                .file-name {
+                                color: #333;
+                                }
+                            `}
+                        </style>
                     </div>
                     <button type="submit" className="btn-update" disabled={updatingProfile}>
                         {updatingProfile ? 'Updating...' : 'Update Profile'}

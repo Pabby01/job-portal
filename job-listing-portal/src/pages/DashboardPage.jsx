@@ -1,27 +1,33 @@
 import { useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate, Route, Routes } from 'react-router-dom';
-import EmployerDashboardPage from './EmployerDashboardPage';
-import UserDashboardPage from './UserDashboardPage';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardPage = () => {
-    const { user } = useAuth();
+    const { user, loading } = useAuth();
     const navigate = useNavigate();
 
-    if (!user) navigate('/')
-    return (
-        <>
-            <div>
-                DashboardPage
-            </div>
-            {/* 
-            <Routes>
-                <Route index element={<div>Dashboard Home Content</div>} />
-                <Route path="user" element={<UserDashboard />} />
-                <Route path="/employer" element={<EmployerDashboard />} />
-            </Routes> */}
-        </>
-    )
-}
+    useEffect(() => {
+        if (!loading && user) {
+            console.log(user.role)
+            switch (user.role) {
+                case 'employer':
+                    navigate('/dashboard/employer');
+                    break;
+                case 'job_seeker':
+                    navigate('/dashboard/job-seeker');
+                    break;
+                default:
+                    navigate('/login');
+            }
+        } else if (!loading && !user) {
+            navigate('/login');
+        }
+    }, [user, loading, navigate]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+};
+
 
 export default DashboardPage

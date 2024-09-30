@@ -19,6 +19,7 @@ import DashboardPage from './pages/DashboardPage.jsx';
 import UserDashboardPage from './pages/UserDashboardPage.jsx';
 import EmployerDashboardPage from './pages/EmployerDashboardPage.js';
 import PostJobPage from './pages/employer/PostJobPage.jsx';
+import ManageJobPage from './pages/employer/ManageJobPage.jsx';
 // import Modal from './components/Modal.js';
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
             <Route path="/jobs/:jobId" element={<JobDetails />} />
             <Route path="/apply/:jobId" element={<JobApplicationForm />} />
             <Route path="/post-job" element={<PostJobPage />} />
+            <Route path="/manage-jobs" element={<ManageJobPage />} />
+            <Route path="/applications" element={<ManageJobPage />} />
             {/* <Route path="/login" element={<LoginPage onLogin={() => setIsAuthenticated(true)} />} /> */}
             <Route path="/login" element={<LoginPage />} />
             <Route path="/login/success" element={<SuccessPage />} />
@@ -46,6 +49,8 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route path="/verify-code" element={<VerifyCodePage />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
+            {/* <Route path="/user/profile" element={<ResetPasswordPage />} />
+            <Route path="/employer/profile" element={<ResetPasswordPage />} /> */}
           </Routes>
         </Layout>
       </Router>
