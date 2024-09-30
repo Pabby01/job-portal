@@ -5,7 +5,7 @@ import asyncHandler from 'express-async-handler'; // Helps in handling exception
 
 // Middleware to protect routes
 const protect = asyncHandler(async (req, res, next) => {
-  let token;
+  let token = '';
 
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     try {

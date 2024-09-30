@@ -1,7 +1,8 @@
 //Creating a basic server using Express(main server entry point)
-import express from "express";
+import express, { urlencoded } from "express";
 import dotenv from "dotenv";
 import cors from 'cors';
+import multer from 'multer';
 
 // import jobseekerRoutes from "./routes/jobseeker.route.js"; // Importing the default export
 // import employerRoutes from "./routes/employer.route.js"; // Importing the default export
@@ -19,6 +20,13 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+// const upload = multer();
+
+// app.post('/api/jobs', upload.none(), (req, res) => {
+//   console.log(req.body);
+//   // Your logic here
+// });
 
 app.use(cors());
 

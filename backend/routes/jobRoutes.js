@@ -1,28 +1,27 @@
 // routes/jobRoutes.js
 import express from 'express';
-// import Job from '../models/Job.js';
-import jobListings from '../db/fakeData.js';
+import multer from 'multer';
+import Job from '../models/Job.js';
 import { protect, employer, admin } from '../middlewares/authMiddleware.js';  // Middleware to check if user is logged in and/or an admin
 
 const router = express.Router();
+const upload = multer();
 
 // Fetch all jobs
-router.get('/', async (req, res) => {
-  // const jobs = await Job.find({});
-  // res.json(jobs);
-  return res.json(jobListings);
+router.get('/', async (_req, res) => {
+  const jobs = await Job.find({});
+  res.json(jobs);
 });
 
 // Fetch all Featured Jobs
-router.get('/featured/', (req, res) => {
-  const featuredJobs = jobListings.filter(job => job.featured === true);
+router.get('/featured', async (_req, res) => {
+  const featuredJobs = await Job.find({ featured: true });
   return res.json(featuredJobs)
 })
 
 // Fetch a single job by ID
 router.get('/:id', async (req, res) => {
-  const job = jobListings.find(job => job.id == parseInt(req.params.id));
-  // const job = await Job.findById(req.params.id);
+  const job = await Job.findById(req.params.id);
   if (job) {
     res.json(job);
   } else {
@@ -31,17 +30,23 @@ router.get('/:id', async (req, res) => {
 });
 
 // Create a new job
-router.post('/', protect, employer, async (req, res) => {
-  const { title, description, salary, location } = req.body;
-  const job = new Job({
-    title,
-    description,
-    salary,
-    location,
-    employer: req.user._id  // Assuming req.user is populated by the protect middleware
-  });
-  const createdJob = await job.save();
-  res.status(201).json(createdJob);
+router.post('/', upload.none(), protect, employer, async (req, res) => {
+  const { title, description, salary, location, jobType, featured } = req.body;
+  try {
+    const job = new Job({
+      title,
+      description,
+      salary,
+      location,
+      jobType,
+      featured,
+      employer: req.user._id
+    });
+    const createdJob = await job.save();
+    res.status(201).json(createdJob);
+  } catch (e) {
+    next(e);
+  }
 });
 
 // Update a job
