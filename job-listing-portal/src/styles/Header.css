@@ -10,24 +10,25 @@
   color: white;
 }
 
-.site-header .logo a {
+.logo a {
   color: white;
   font-size: 24px;
   text-decoration: none;
 }
 
-.site-header .nav-links ul {
+.nav-links ul {
   list-style: none;
   display: flex;
   gap: 15px;
+  align-items: center;
 }
 
-.site-header .nav-links a {
+.nav-links a {
   color: white;
   text-decoration: none;
   font-size: 16px;
 }
 
-.site-header .nav-links a:hover {
+.nav-links a:hover {
   text-decoration: underline;
 }

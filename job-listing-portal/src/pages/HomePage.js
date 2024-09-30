@@ -76,17 +76,17 @@ const HomePage = () => {
           <div className='testimonials'>
             <div className='testimonial'>
               <p>"This platform made it so easy for me to find a job that matches my skills. I was able to apply to multiple positions with just one click, and I landed my dream job in no time!"</p>
-              <h4>– Jane Doe, Software Developer</h4>
+              <h4>- Jane Doe, Software Developer</h4>
             </div>
 
             <div className='testimonial'>
               <p>"As an employer, I was impressed by the number of qualified candidates I could reach. The hiring process was smooth, and I found the perfect fit for our team quickly!"</p>
-              <h4>– John Smith, HR Manager at TechCorp</h4>
+              <h4>- John Smith, HR Manager at TechCorp</h4>
             </div>
 
             <div className='testimonial'>
               <p>"I had been searching for a job for months before I found this platform. Within weeks of signing up, I received multiple interview invitations. Thank you for helping me get my career back on track!"</p>
-              <h4>– Sarah Lee, Data Analyst</h4>
+              <h4>- Sarah Lee, Data Analyst</h4>
             </div>
           </div>
         </div>

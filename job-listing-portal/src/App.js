@@ -16,8 +16,9 @@ import { AuthProvider } from './context/AuthContext.js';
 import AboutUsPage from './pages/AboutUsPage.jsx';
 import BlogsPage from './pages/BlogsPage.jsx';
 import DashboardPage from './pages/DashboardPage.jsx';
-import UserDashboard from './pages/UserDashboard.jsx';
-import EmployerDashboard from './pages/EmployerDashboard.js';
+import UserDashboardPage from './pages/UserDashboardPage.jsx';
+import EmployerDashboardPage from './pages/EmployerDashboardPage.js';
+import PostJobPage from './pages/employer/PostJobPage.jsx';
 // import Modal from './components/Modal.js';
 
 function App() {
@@ -32,11 +33,12 @@ function App() {
             <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/blogs" element={<BlogsPage />} />
             <Route path="/dashboard" element={<DashboardPage />} /> {/* Intend to use for verification to redirect to either employee or user dashboards*/}
-            <Route path="/dashboard/job-seeker" element={<UserDashboard />} />
-            <Route path="/dashboard/employer" element={<EmployerDashboard />} />
+            <Route path="/dashboard/job-seeker" element={<UserDashboardPage />} />
+            <Route path="/dashboard/employer" element={<EmployerDashboardPage />} />
             {/* <Route path="/dashboard/employer" element={<DashboardPage />} /> */}
             <Route path="/jobs/:jobId" element={<JobDetails />} />
             <Route path="/apply/:jobId" element={<JobApplicationForm />} />
+            <Route path="/post-job" element={<PostJobPage />} />
             {/* <Route path="/login" element={<LoginPage onLogin={() => setIsAuthenticated(true)} />} /> */}
             <Route path="/login" element={<LoginPage />} />
             <Route path="/login/success" element={<SuccessPage />} />

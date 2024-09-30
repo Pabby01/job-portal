@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Route, Routes } from 'react-router-dom';
-import EmployerDashboard from './EmployerDashboard';
-import UserDashboard from './UserDashboard';
+import EmployerDashboardPage from './EmployerDashboardPage';
+import UserDashboardPage from './UserDashboardPage';
 
 const DashboardPage = () => {
     const { user } = useAuth();
@@ -14,7 +14,7 @@ const DashboardPage = () => {
             <div>
                 DashboardPage
             </div>
-{/* 
+            {/* 
             <Routes>
                 <Route index element={<div>Dashboard Home Content</div>} />
                 <Route path="user" element={<UserDashboard />} />
