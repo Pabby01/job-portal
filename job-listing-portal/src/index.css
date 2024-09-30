@@ -11,3 +11,57 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+* {
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+}
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  /* 16px padding (similar to px-4 in Tailwind) */
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+
+  /* sm: */
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+
+  /* md: */
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  /* lg: */
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+
+  /* xl: */
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+
+  /* 2xl: */
+  .container {
+    max-width: 1536px;
+  }
+}

@@ -8,8 +8,10 @@ const JobCard = ({ job }) => {
       <p>{job.company}</p>
       <p>{job.location}</p>
       <p>{job.salary}</p>
-      <Link to={`/job/${job.id}`} className="details-link">View Details</Link>
-      <Link to={`/apply/${job.id}`} className="apply-button">Apply Now</Link>
+      <div>
+        <Link to={`/jobs/${job.id}`} className="details-link">View Details</Link>
+        <Link to={`/apply/${job.id}`} className="apply-button">Apply Now</Link>
+      </div>
     </div>
   );
 };

@@ -23,7 +23,7 @@ const JobApplicationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const applicationData = new FormData();
     applicationData.append('name', formData.name);
     applicationData.append('email', formData.email);
@@ -43,9 +43,9 @@ const JobApplicationForm = () => {
   };
 
   return (
-    <div className="application-form-container">
+    <div className="container application-form-container">
       <h2>Apply for Job</h2>
-      <form onSubmit={handleSubmit}>
+      <form className='jobapplicationform' onSubmit={handleSubmit}>
         <div>
           <label>Name</label>
           <input type="text" name="name" value={formData.name} onChange={handleChange} required />

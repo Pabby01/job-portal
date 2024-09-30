@@ -1,5 +1,5 @@
 //Creating a basic server using Express(main server entry point)
-import express from "express";
+import express, { urlencoded } from "express";
 import dotenv from "dotenv";
 import cors from 'cors';
 
@@ -11,8 +11,10 @@ import { createServer } from 'http'; // To create the HTTP server
 import { Server as SocketIO } from 'socket.io';
 import { connectDB } from "./config/db.js";
 
-import { jobRoutes } from './routes.js'
-import { userRoutes } from './routes.js'
+import jobRoutes from './routes/jobRoutes.js'
+import userRoutes from './routes/userRoutes.js'
+import EmployerRoutes from './routes/employerRoutes.js';
+import JobSeekerRoutes from './routes/jobSeekerRoute.js';
 
 dotenv.config();
 connectDB();
@@ -25,6 +27,8 @@ app.use(express.json()); //express middleware to pass JSON bodies
 
 app.use('/api/jobs', jobRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/employer', EmployerRoutes);
+app.use('/api/user', JobSeekerRoutes);
 
 
 // Create an HTTP server to work with Socket.IO
@@ -74,6 +78,7 @@ io.on('connection', (socket) => {
 });
 
 
-app.listen(5000, () => {
-  console.log("Server started at http://localhost:5000");
+const PORT = process.env.PORT ? process.env.PORT : 5000;
+app.listen(PORT, () => {
+  console.log(`Server started at http://localhost:${PORT}`);
 });

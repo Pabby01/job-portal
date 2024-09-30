@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 import JobCard from './JobCard';
 import axios from 'axios';
 
-const JobList = () => {
+const JobList = ({ featured }) => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Fetch job listings from the backend API
-    axios.get('http://localhost:5000/api/jobs')
+    let url = null;
+    url = featured ? 'http://localhost:5000/api/jobs/featured/' : 'http://localhost:5000/api/jobs/';
+    axios.get(url)
       .then((response) => {
+        console.log(response.data, 'Jobs')
         setJobs(response.data); // Assume the API returns an array of jobs
         setLoading(false);
       })
@@ -17,7 +20,7 @@ const JobList = () => {
         console.error('Error fetching jobs:', error);
         setLoading(false);
       });
-  }, []);
+  }, [featured]);
 
   if (loading) {
     return <p>Loading jobs...</p>;

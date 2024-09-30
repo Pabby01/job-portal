@@ -1,0 +1,141 @@
+/* UserDashboard.css */
+
+.user-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+.user-dashboard h1 {
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.user-dashboard h2 {
+    color: #2c3e50;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.notification {
+    background-color: #fdf2e9;
+    border-left: 4px solid #f39c12;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+
+.user-profile,
+.job-applications,
+.saved-jobs {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #e1e4e8;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.btn-update {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-update:hover {
+    background-color: #2980b9;
+}
+
+.btn-update:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.job-applications ul,
+.saved-jobs ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.job-applications li,
+.saved-jobs li {
+    border-bottom: 1px solid #e1e4e8;
+    padding: 15px 0;
+}
+
+.job-applications li:last-child,
+.saved-jobs li:last-child {
+    border-bottom: none;
+}
+
+.application-info,
+.job-info {
+    margin-bottom: 10px;
+}
+
+.job-title {
+    font-weight: bold;
+    font-size: 18px;
+    color: #3498db;
+}
+
+.company-name,
+.job-location,
+.application-status {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.application-status {
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .user-dashboard {
+        padding: 10px;
+    }
+
+    .user-profile,
+    .job-applications,
+    .saved-jobs {
+        padding: 15px;
+    }
+
+    .job-title {
+        font-size: 16px;
+    }
+
+    .company-name,
+    .job-location,
+    .application-status {
+        font-size: 12px;
+    }
+}
