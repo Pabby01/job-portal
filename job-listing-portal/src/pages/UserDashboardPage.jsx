@@ -50,7 +50,12 @@ const UserDashboard = () => {
                     Authorization: `Bearer ${token}`
                 }
             })
-                .then(response => setUserProfile(response.data))
+                .then(response => {
+                    setUserProfile(response.data);
+                    if (response.data.resume) {
+                        setFileName(response.data.resume.split('/').pop()); // Set file name from URL
+                    }
+                })
                 .catch(error => console.error('Error fetching user profile:', error));
         }
     }, [apiUrl, token, loading, user]);
@@ -63,15 +68,22 @@ const UserDashboard = () => {
         for (const key in userProfile) {
             if (key === 'skills') {
                 formData.append(key, JSON.stringify(userProfile[key]));
-            } else if (key === 'resume' && userProfile[key] instanceof File) {
-                formData.append(key, userProfile[key], userProfile[key].name);
+            } else if (key === 'resume') {
+                if (userProfile[key] instanceof File) {
+                    formData.append(key, userProfile[key], userProfile[key].name);
+                } else if (userProfile[key]) {
+                    // If it's a string (URL), append it as is
+                    formData.append(key, userProfile[key]);
+                }
             } else {
                 formData.append(key, userProfile[key]);
             }
         }
 
-        alert('set');
-        console.log(formData);
+        // For debugging purposes
+        for (let [key, value] of formData.entries()) {
+            console.log(key, value);
+        }
 
         axios.post(`${apiUrl}/api/user/update-profile`, formData, {
             headers: {
@@ -89,14 +101,6 @@ const UserDashboard = () => {
             });
     };
 
-    // const handleFileChange = (event) => {
-    //     const file = event.target.files[0];
-    //     if (file) {
-    //         setFileName(file.name);
-    //         // onChange(file);
-    //     }
-    // };
-
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -106,23 +110,6 @@ const UserDashboard = () => {
                 resume: file
             }));
         }
-    };
-
-    const handleResumeUpload = (e) => {
-        const file = e.target.files[0];
-        const formData = new FormData();
-        formData.append('resume', file);
-
-        axios.post(`${apiUrl}/api/user/upload-resume`, formData, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-            .then(response => {
-                setUserProfile({ ...userProfile, resume: response.data.resumeUrl });
-                alert('Resume uploaded successfully!');
-            })
-            .catch(error => console.error('Error uploading resume:', error));
     };
 
     return (
@@ -164,15 +151,7 @@ const UserDashboard = () => {
                             onChange={(e) => setUserProfile({ ...userProfile, skills: e.target.value.split(',').map(skill => skill.trim()) })}
                         />
                     </div>
-                    {/* <div className="form-group">
-                        <label>Resume</label>
-                        <input
-                            type="file"
-                            accept=".pdf,.doc,.docx"
-                            onChange={handleResumeUpload}
-                        />
-                    </div> */}
-                    <div className="file-input-container">
+                    <div className="file-input-container form-group">
                         <label className="file-input-label">
                             <span className="file-input-button">Choose File</span>
                             <input
