@@ -7,9 +7,18 @@ const OurPartners = () => {
       <h2>Our Partners</h2>
       <div className="partner-logos">
         {/* Replace with actual partner logos */}
-        <img className='client-logos-img' src="src/assets/linkden.jpg" alt="Partner 1" />
-        <img className='client-logos-img' src="src/assets/linkden.jpg" alt="Partner 2" />
-        <img className='client-logos-img' src="src/assets/linkden.jpg" alt="Partner 3" />
+        <div>
+          <img className='client-logos-img' src="src/assets/linkden.jpg" alt="Partner 1" />
+          <p><h3 className='name'>Lasisi Matthew Adeola</h3></p>
+        </div>
+        <div>
+          <img className='client-logos-img' src="src/assets/linkden.jpg" alt="Partner 2" />
+          <p><h3 className='name'>Lasisi Matthew Adeola</h3></p>
+        </div>
+        <div>
+          <img className='client-logos-img' src="src/assets/linkden.jpg" alt="Partner 3" />
+          <p><h3  className='name'>Lasisi Matthew Adeola</h3></p>
+        </div>
       </div>
     </section>
   );

@@ -32,7 +32,7 @@
   }
   
   .user-type-switch button.active {
-    background-color: #e63946;
+    background-color: #1d08a4;
     color: white;
   }
   
@@ -52,7 +52,7 @@
   }
   
   .login-btn {
-    background-color: #2a9d8f;
+    background-color: #081681;
     color: white;
     padding: 0.8rem;
     border: none;
