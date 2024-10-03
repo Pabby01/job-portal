@@ -1,0 +1,73 @@
+/* General Container */
+h1,
+h2 {
+    text-align: center;
+}
+
+/* Blog Hero Section */
+.blog-hero {
+    background-color: #f4f4f4;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.blog-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.blog-hero p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Blog Posts Section */
+.blog-posts {
+    padding: 40px 20px;
+}
+
+.blog-post {
+    background: #fff;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.blog-post .date {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.blog-post p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.blog-post .read-more {
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.blog-post .read-more:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .blog-post h2 {
+        font-size: 1.5rem;
+    }
+
+    .blog-post p {
+        font-size: 0.95rem;
+    }
+}

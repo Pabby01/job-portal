@@ -1,0 +1,94 @@
+.job-seeker-dashboard {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 28px;
+  color: #333;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+.profile-completion .progress-bar {
+  background-color: #e0e0e0;
+  height: 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.profile-completion .progress {
+  background-color: #4caf50;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.personal-details .form-group {
+  margin-bottom: 15px;
+}
+
+.personal-details .form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.personal-details .form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.btn-update {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-update:disabled {
+  background-color: #cccccc;
+}
+
+.applied-jobs ul, .job-recommendations ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.applied-jobs li, .job-recommendations li {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.job-status-under-review {
+  border-left: 4px solid #ff9800;
+}
+
+.job-status-accepted {
+  border-left: 4px solid #4caf50;
+}
+
+.job-status-rejected {
+  border-left: 4px solid #f44336;
+}
+
+.job-title {
+  font-weight: bold;
+}
+
+.job-location {
+  font-size: 0.9em;
+  color: #555;
+}
