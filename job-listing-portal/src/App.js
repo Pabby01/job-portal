@@ -23,7 +23,7 @@ import ManageJobPage from './pages/employer/ManageJobPage.jsx';
 // import Modal from './components/Modal.js';
 
 function App() {
-  const [setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
     <AuthProvider>
